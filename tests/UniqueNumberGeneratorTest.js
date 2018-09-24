@@ -2,4 +2,5 @@
 
 const UniqueNumber = require('../UniqueNumberGenerator.js');
 
-console.log('UniqueNumber:', UniqueNumber.getRandomNumber(11));
+console.log('UniqueNumber:', UniqueNumber.timestampBased().getRandomNumber());
+//console.log('UniqueNumber:', UniqueNumber.getRandomNumber());
