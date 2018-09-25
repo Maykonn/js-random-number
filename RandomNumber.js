@@ -3,33 +3,67 @@ const NumberLength = require('./NumberLength.js');
 class RandomNumber {
 
   /**
-   * @param {RandomNumber} length
+   * @param {NumberLength} length
    */
   constructor(length) {
-    if (!(length instanceof NumberLength)) {
-      throw new Error('The length param must be an instance of NumberLength object');
-    }
-
+    /**
+     * @type {NumberLength}
+     * @private
+     */
     this._length = length;
-    this._value = this.generate();
+
+    /**
+     * @type {number}
+     * @private
+     */
+    this._value = this.getValue();
   }
 
+  /**
+   * @return {NumberLength}
+   */
   getLength() {
     return this._length;
   }
 
+  /**
+   * @return {number}
+   */
   getValue() {
+    if (typeof this._value === 'undefined') {
+      this._value = this._generate();
+    }
+
     return this._value;
   }
 
-  generate() {
-    const length = this._length.getValue();
+  /**
+   * @return {number}
+   * @protected
+   */
+  _generate() {
+    this._validateNumberLengthInstance(this._length);
+    const lengthValue = this._length.getValue();
+
     return Math.floor(
-      Math.pow(10, length - 1) +
-      Math.random() * (Math.pow(10, length) - Math.pow(10, length - 1) - 1)
+      Math.pow(10, lengthValue - 1) +
+      Math.random() * (Math.pow(10, lengthValue) - Math.pow(10, lengthValue - 1) - 1)
     );
   }
 
+  /**
+   * Validate if NumberLengthInstance param is instance of NumberLength object
+   * @param {NumberLength} NumberLengthInstance
+   * @return {boolean}
+   * @private
+   */
+  _validateNumberLengthInstance(NumberLengthInstance) {
+    if (!(NumberLengthInstance instanceof NumberLength)) {
+      throw new Error('The length param must be an instance of NumberLength object');
+    }
+
+    return true;
+  }
 }
 
 module.exports = RandomNumber;
