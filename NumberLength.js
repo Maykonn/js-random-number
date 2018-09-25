@@ -23,5 +23,4 @@ class NumberLength {
 
 }
 
-
 module.exports = NumberLength;
