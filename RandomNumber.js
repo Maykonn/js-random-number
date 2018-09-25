@@ -1,40 +1,19 @@
+const AbstractRandomNumber = require('./AbstractRandomNumber.js');
 const NumberLength = require('./NumberLength.js');
 
-class RandomNumber {
+class RandomNumber extends AbstractRandomNumber {
 
   /**
    * @param {NumberLength} length
    */
   constructor(length) {
-    /**
-     * @type {NumberLength}
-     * @private
-     */
-    this._length = length;
+    super(length);
 
     /**
      * @type {number}
      * @private
      */
-    this._value = this.getValue();
-  }
-
-  /**
-   * @return {NumberLength}
-   */
-  getLength() {
-    return this._length;
-  }
-
-  /**
-   * @return {number}
-   */
-  getValue() {
-    if (typeof this._value === 'undefined') {
-      this._value = this._generate();
-    }
-
-    return this._value;
+    this._value = this._generate();
   }
 
   /**
@@ -42,8 +21,7 @@ class RandomNumber {
    * @protected
    */
   _generate() {
-    this._validateNumberLengthInstance(this._length);
-    const lengthValue = this._length.getValue();
+    const lengthValue = this.getLength().getValue();
 
     return Math.floor(
       Math.pow(10, lengthValue - 1) +
@@ -51,19 +29,7 @@ class RandomNumber {
     );
   }
 
-  /**
-   * Validate if NumberLengthInstance param is instance of NumberLength object
-   * @param {NumberLength} NumberLengthInstance
-   * @return {boolean}
-   * @private
-   */
-  _validateNumberLengthInstance(NumberLengthInstance) {
-    if (!(NumberLengthInstance instanceof NumberLength)) {
-      throw new Error('The length param must be an instance of NumberLength object');
-    }
 
-    return true;
-  }
 }
 
 module.exports = RandomNumber;
