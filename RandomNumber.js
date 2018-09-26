@@ -1,13 +1,13 @@
 const AbstractRandomNumber = require('./AbstractRandomNumber.js');
-const NumberLength = require('./NumberLength.js');
+const Configuration = require('./Configuration.js');
 
 class RandomNumber extends AbstractRandomNumber {
 
   /**
-   * @param {NumberLength} length
+   * @param {Configuration} NumberConfiguration
    */
-  constructor(length) {
-    super(length);
+  constructor(NumberConfiguration) {
+    super(NumberConfiguration);
 
     /**
      * @type {number}
@@ -21,7 +21,7 @@ class RandomNumber extends AbstractRandomNumber {
    * @protected
    */
   _generate() {
-    const lengthValue = this.getLength().getValue();
+    const lengthValue = this.getConfiguration().getMaxLength().getValue();
 
     const number = Math.floor(
       Math.pow(10, lengthValue - 1) +
