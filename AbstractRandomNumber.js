@@ -65,8 +65,8 @@ class AbstractRandomNumber {
     const cipher = fpe({password: crypto.randomBytes(bytes)});
 
     let random = cipher.encrypt(number.toString());
-    while (random.charAt(0) === '0') {
-      random = this._increaseNumberRandomness(number);
+    if (random.toString().charAt(0) === '0') {
+      return this._increaseNumberRandomness(number);
     }
 
     return parseInt(random);
