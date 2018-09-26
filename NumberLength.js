@@ -1,13 +1,28 @@
 class NumberLength {
 
-  constructor(length) {
+  /**
+   * @param length
+   */
+  constructor(length = undefined) {
+    /**
+     * @type {number}
+     * @private
+     */
     this._value = this._computeLength(length);
   }
 
+  /**
+   * @return {number}
+   */
   getValue() {
     return this._value;
   }
 
+  /**
+   * @param length
+   * @return {number}
+   * @private
+   */
   _computeLength(length) {
     let value = length;
     const maxLength = Number.MAX_SAFE_INTEGER.toString().length;
