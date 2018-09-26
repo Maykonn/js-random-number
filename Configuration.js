@@ -1,3 +1,5 @@
+const NumberLength = require('./NumberLength.js');
+
 class Configuration {
 
   constructor() {
@@ -8,8 +10,22 @@ class Configuration {
    * @return {Configuration}
    */
   reset() {
+    /**
+     * @type {NumberLength}
+     * @private
+     */
     this._minLength = undefined;
+
+    /**
+     * @type {NumberLength}
+     * @private
+     */
     this._maxLength = undefined;
+
+    /**
+     * @type {boolean}
+     * @private
+     */
     this._timestampBased = undefined;
     return this;
   }
@@ -20,8 +36,9 @@ class Configuration {
    */
   setLength(length) {
     this._validateLength(length);
-    this._minLength = length;
-    this._maxLength = length;
+    const Length = new NumberLength(length);
+    this._minLength = Length;
+    this._maxLength = Length;
     return this;
   }
 
@@ -31,12 +48,12 @@ class Configuration {
    */
   setMinLength(length) {
     this._validateLength(length);
-    this._minLength = length;
+    this._minLength = new NumberLength(length);
     return this;
   }
 
   /**
-   * @return {number}
+   * @return {NumberLength}
    */
   getMinLength() {
     return this._minLength;
@@ -48,12 +65,12 @@ class Configuration {
    */
   setMaxLength(length) {
     this._validateLength(length);
-    this._maxLength = length;
+    this._maxLength = new NumberLength(length);
     return this;
   }
 
   /**
-   * @return {number}
+   * @return {NumberLength}
    */
   getMaxLength() {
     return this._maxLength;
