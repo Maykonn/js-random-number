@@ -57,13 +57,19 @@ class AbstractRandomNumber {
   /**
    * Return a new number with strong randomness
    * @param {number} number
-   * @return {string}
+   * @return {number}
    * @protected
    */
   _increaseNumberRandomness(number) {
     const bytes = 256;
     const cipher = fpe({password: crypto.randomBytes(bytes)});
-    return cipher.encrypt(number.toString());
+
+    let random = cipher.encrypt(number.toString());
+    while (random.charAt(0) === '0') {
+      random = this._increaseNumberRandomness(number);
+    }
+
+    return parseInt(random);
   }
 
 }
