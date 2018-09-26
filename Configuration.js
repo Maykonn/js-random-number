@@ -24,15 +24,27 @@ class Configuration {
     return this;
   }
 
+  getMinLength() {
+    return this._minLength;
+  }
+
   setMaxLength(length) {
     this._validateLength(length);
     this._maxLength = length;
     return this;
   }
 
+  getMaxLength() {
+    return this._maxLength;
+  }
+
   timestampBased() {
     this._timestampBased = true;
     return this;
+  }
+
+  isTimestampBased() {
+    return Boolean(this._timestampBased);
   }
 
   _validateLength(length) {
