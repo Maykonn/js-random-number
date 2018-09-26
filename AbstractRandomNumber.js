@@ -1,21 +1,21 @@
 const crypto = require('crypto');
 const fpe = require('node-fpe');
-const NumberLength = require('./NumberLength.js');
+const Configuration = require('./Configuration.js');
 
 class AbstractRandomNumber {
 
   /**
-   * @param {NumberLength} length
+   * @param {Configuration} NumberConfiguration
    */
-  constructor(length) {
+  constructor(NumberConfiguration) {
     this._value = undefined;
 
     /**
-     * @type {NumberLength}
+     * @type {Configuration}
      * @private
      */
-    this._length = undefined;
-    this.setLength(length);
+    this._configuration = undefined;
+    this.setConfiguration(NumberConfiguration);
   }
 
   /**
@@ -26,29 +26,29 @@ class AbstractRandomNumber {
   }
 
   /**
-   * @return {NumberLength}
+   * @return {Configuration}
    */
-  getLength() {
-    return this._length;
+  getConfiguration() {
+    return this._configuration;
   }
 
   /**
-   * @param {NumberLength} length
+   * @param {Configuration} NumberConfiguration
    */
-  setLength(length) {
-    this._validateNumberLengthInstance(length);
-    this._length = length;
+  setConfiguration(NumberConfiguration) {
+    this._validateConfigurationInstance(NumberConfiguration);
+    this._configuration = NumberConfiguration;
   }
 
   /**
-   * Validate if NumberLengthInstance param is instance of NumberLength object
-   * @param {NumberLength} NumberLengthInstance
+   * Validate if NumberConfiguration param is instance of Configuration object
+   * @param {Configuration} NumberConfiguration
    * @return {boolean}
    * @private
    */
-  _validateNumberLengthInstance(NumberLengthInstance) {
-    if (!(NumberLengthInstance instanceof NumberLength)) {
-      throw new Error('The length param must be an instance of NumberLength object');
+  _validateConfigurationInstance(NumberConfiguration) {
+    if (!(NumberConfiguration instanceof Configuration)) {
+      throw new Error('The NumberConfiguration param must be an instance of Configuration object');
     }
 
     return true;
