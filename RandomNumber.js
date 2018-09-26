@@ -23,12 +23,13 @@ class RandomNumber extends AbstractRandomNumber {
   _generate() {
     const lengthValue = this.getLength().getValue();
 
-    return Math.floor(
+    const number = Math.floor(
       Math.pow(10, lengthValue - 1) +
       Math.random() * (Math.pow(10, lengthValue) - Math.pow(10, lengthValue - 1) - 1)
     );
-  }
 
+    return super._increaseNumberRandomness(number);
+  }
 
 }
 
