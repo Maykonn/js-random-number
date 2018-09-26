@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+const fpe = require('node-fpe');
 const NumberLength = require('./NumberLength.js');
 
 class AbstractRandomNumber {
@@ -51,6 +53,19 @@ class AbstractRandomNumber {
 
     return true;
   }
+
+  /**
+   * Return a new number with strong randomness
+   * @param {number} number
+   * @return {string}
+   * @protected
+   */
+  _increaseNumberRandomness(number) {
+    const bytes = 256;
+    const cipher = fpe({password: crypto.randomBytes(bytes)});
+    return cipher.encrypt(number.toString());
+  }
+
 }
 
 module.exports = AbstractRandomNumber;
