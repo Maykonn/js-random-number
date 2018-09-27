@@ -1,9 +1,9 @@
 class NumberLength {
 
   /**
-   * @param length
+   * @param {number} length
    */
-  constructor(length = undefined) {
+  constructor(length = 0) {
     /**
      * @type {number}
      * @private
