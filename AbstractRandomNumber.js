@@ -9,36 +9,19 @@ class AbstractRandomNumber {
    * @param {Configuration} NumberConfiguration
    */
   constructor(NumberConfiguration) {
-    /**
-     * @return {number}
-     */
-    this._value = undefined;
+    this.setConfiguration(NumberConfiguration);
 
     /**
-     * @return {NumberLength}
+     * @type {NumberLength}
+     * @protected
      */
-    this._length = undefined;
+    this._length = this._calculateLength();
 
     /**
-     * @type {Configuration}
+     * @type {number}
      * @private
      */
-    this._configuration = undefined;
-    this.setConfiguration(NumberConfiguration);
-  }
-
-  /**
-   * @return {number}
-   */
-  getValue() {
-    return this._value;
-  }
-
-  /**
-   * @return {NumberLength}
-   */
-  getLength() {
-    return this._length;
+    this._value = 0;
   }
 
   /**
@@ -57,10 +40,24 @@ class AbstractRandomNumber {
   }
 
   /**
+   * @return {NumberLength}
+   */
+  getLength() {
+    return this._length;
+  }
+
+  /**
+   * @return {number}
+   */
+  getValue() {
+    return this._value;
+  }
+
+  /**
    * Validate if NumberConfiguration param is instance of Configuration object
    * @param {Configuration} NumberConfiguration
    * @return {boolean}
-   * @private
+   * @protected
    */
   _validateConfigurationInstance(NumberConfiguration) {
     if (!(NumberConfiguration instanceof Configuration)) {
