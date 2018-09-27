@@ -14,19 +14,19 @@ class Configuration {
      * @type {NumberLength}
      * @private
      */
-    this._minLength = undefined;
+    this._minLength = 0;
 
     /**
      * @type {NumberLength}
      * @private
      */
-    this._maxLength = undefined;
+    this._maxLength = 0;
 
     /**
      * @type {boolean}
      * @private
      */
-    this._timestampBased = undefined;
+    this._timestampBased = false;
     return this;
   }
 
@@ -56,6 +56,14 @@ class Configuration {
    * @return {NumberLength}
    */
   getMinLength() {
+    if (!this._minLength) {
+      this._minLength = new NumberLength();
+    }
+
+    if (this._maxLength && this._minIsGreaterThanMax()) {
+      this._minLength = new NumberLength(this._maxLength.getValue());
+    }
+
     return this._minLength;
   }
 
@@ -73,6 +81,14 @@ class Configuration {
    * @return {NumberLength}
    */
   getMaxLength() {
+    if (!this._maxLength) {
+      this._maxLength = new NumberLength();
+    }
+
+    if (this._minLength && this._minIsGreaterThanMax()) {
+      this._maxLength = new NumberLength(this._minLength.getValue());
+    }
+
     return this._maxLength;
   }
 
@@ -102,6 +118,13 @@ class Configuration {
     }
 
     return true;
+  }
+
+  /**
+   * @private
+   */
+  _minIsGreaterThanMax() {
+    return this._minLength.getValue() > this._maxLength.getValue();
   }
 
 }
