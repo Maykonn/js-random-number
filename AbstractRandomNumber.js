@@ -9,6 +9,7 @@ class AbstractRandomNumber {
    */
   constructor(NumberConfiguration) {
     this._value = undefined;
+    this._length = undefined;
 
     /**
      * @type {Configuration}
@@ -23,6 +24,13 @@ class AbstractRandomNumber {
    */
   getValue() {
     return this._value;
+  }
+
+  /**
+   * @return {number}
+   */
+  getLength() {
+    return this._length;
   }
 
   /**
