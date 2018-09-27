@@ -12,7 +12,7 @@ class RandomNumber extends AbstractRandomNumber {
     super(NumberConfiguration);
 
     /**
-     * @type {number}
+     * @type {NumberLength}
      * @private
      */
     this._length = this._calculateLength();
@@ -26,16 +26,18 @@ class RandomNumber extends AbstractRandomNumber {
 
   /**
    * Randomize a length between configured min and max length
-   * @return {number}
+   * @return {NumberLength}
    * @protected
    */
   _calculateLength() {
     const minLength = this.getConfiguration().getMinLength().getValue();
     const maxLength = this.getConfiguration().getMaxLength().getValue();
 
-    return Math.floor(
-      minLength +
-      (Math.random() * (maxLength + 1 - minLength))
+    return new NumberLength(
+      Math.floor(
+        minLength +
+        (Math.random() * (maxLength + 1 - minLength))
+      )
     );
   }
 
@@ -45,7 +47,7 @@ class RandomNumber extends AbstractRandomNumber {
    * @protected
    */
   _generate() {
-    this._length = this._calculateLength();
+    const length = super.getLength().getValue();
 
     const number = Math.floor(
       Math.pow(10, length - 1) +
