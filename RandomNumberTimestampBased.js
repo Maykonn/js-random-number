@@ -1,63 +1,108 @@
 const crypto = require('crypto');
 const fpe = require('node-fpe');
 const AbstractRandomNumber = require('./AbstractRandomNumber.js');
+const Configuration = require('./Configuration.js');
 const RandomNumber = require('./RandomNumber.js');
 const NumberLength = require('./NumberLength.js');
 
 class RandomNumberTimestampBased extends AbstractRandomNumber {
 
   /**
-   * If a length less than the length of current timestamp value is given
-   * the length of the current timestamp value will be used.
-   *
-   * If the given length is 0 or not given, the length will be a random number between the
-   * length of current timestamp value and Number.MAX_SAFE_INTEGER.toString().length.
-   *
-   * @param {NumberLength} length
+   * @param {Configuration} NumberConfiguration
    */
-  constructor(length) {
-    super(length);
+  constructor(NumberConfiguration) {
+    super(NumberConfiguration);
 
     /**
-     * @type {{encrypt, decrypt}}
+     * @type {NumberLength}
      * @private
      */
-    this._cipher = fpe({password: crypto.randomBytes(256)});
-    this._timestampLength = undefined;
+    this._padLength = 0;
+
+    /**
+     * @type {number}
+     * @private
+     */
+    this._timestamp = Date.now();
+
+    /**
+     * @type {NumberLength}
+     * @private
+     */
+    this._timestampLength = new NumberLength(this._timestamp.toString().length);
+
+    /**
+     * @type {number}
+     * @private
+     */
     this._value = this._generate();
   }
 
+  /**
+   * Generates a random number based on current timestamp
+   *
+   * @return {number}
+   * @private
+   */
   _generate() {
-    let now = Date.now().toString();
-    this._timestampLength = now.length;
-    console.log(now);
+    this._verifyLength();
 
-    // the length of a timestamp based number cannot be
-    // less than the length of the current timestamp value
-    if (this.getLength().getValue() < this._timestampLength) {
-      this.setLength(new NumberLength(this._timestampLength));
-    }
-
+    let value = this._timestamp.toString();
     let numberLength = this.getLength().getValue();
 
-    if (this._timestampLength < numberLength) {
-      const pad = new RandomNumber(new NumberLength(numberLength - this._timestampLength));
-
-      // concatenation of current timestamp (string) and pad (string), not a number increment
-      now += pad.getValue().toString();
+    if (numberLength > this._timestampLength.getValue()) {
+      value += this._generatePad().getValue().toString();
     }
 
-    return parseInt(this._cipher.encrypt(now.toString()));
+    return super._increaseNumberRandomness(parseInt(value));
   }
 
   /**
-   * Number's creation timestamp
+   * Test the min and max lengths, if not valid, will generate lengths based on
+   * timestamp length and max safe integer length (the min length of a timestamp
+   * based number cannot be less than the length of the current timestamp)
    *
-   * @return {number}
+   * @private
    */
-  getTimestamp() {
-    const timestamp = this._cipher.decrypt(this.getValue().toString());
-    return parseInt(timestamp.slice(0, this._timestampLength));
+  _verifyLength() {
+    let touched = false;
+    const timestampLength = this._timestampLength.getValue();
+
+    // min length must have at least the length of current timestamp
+    if (this.getConfiguration().getMinLength().getValue() < timestampLength) {
+      this.getConfiguration().setMinLength(timestampLength);
+      touched = true;
+    }
+
+    // max length must have at least the length of current timestamp
+    // and the max safe integer length
+    if (this.getConfiguration().getMaxLength().getValue() < timestampLength) {
+      const maxLengthConfig = new Configuration();
+
+      maxLengthConfig.setLength(NumberLength.getMaxSafeLength());
+      this.getConfiguration().setMaxLength((new RandomNumber(maxLengthConfig)).getValue());
+      touched = true;
+    }
+
+    if (touched) {
+      this._calculateLength();
+    }
+  }
+
+  /**
+   * Creates a random number to pad the number length configured
+   *
+   * @return {RandomNumber}
+   * @private
+   */
+  _generatePad() {
+    const numberLength = this.getLength().getValue();
+    const padConfig = new Configuration();
+
+    this._padLength = new NumberLength(numberLength - this._timestampLength.getValue());
+    padConfig.setLength(this._padLength.getValue());
+
+    return new RandomNumber(padConfig);
   }
 
 }
