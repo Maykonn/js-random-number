@@ -71,6 +71,23 @@ class AbstractRandomNumber {
   }
 
   /**
+   * Randomize a length between configured min and max length
+   * @return {NumberLength}
+   * @protected
+   */
+  _calculateLength() {
+    const minLength = this.getConfiguration().getMinLength().getValue();
+    const maxLength = this.getConfiguration().getMaxLength().getValue();
+
+    return new NumberLength(
+      Math.floor(
+        minLength +
+        (Math.random() * (maxLength + 1 - minLength))
+      )
+    );
+  }
+
+  /**
    * Return a new number with strong randomness
    * @param {number} number
    * @return {number}
