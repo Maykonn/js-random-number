@@ -76,8 +76,8 @@ class AbstractRandomNumber {
    * @protected
    */
   _calculateLength() {
-    const minLength = this.getConfiguration().getMinLength().getValue();
-    const maxLength = this.getConfiguration().getMaxLength().getValue();
+    const minLength = this._configuration.getMinLength().getValue();
+    const maxLength = this._configuration.getMaxLength().getValue();
 
     return new NumberLength(
       Math.floor(
