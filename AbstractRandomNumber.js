@@ -6,6 +6,8 @@ const NumberLength = require('./NumberLength.js');
 class AbstractRandomNumber {
 
   /**
+   * A random number
+   *
    * @param {Configuration} NumberConfiguration
    */
   constructor(NumberConfiguration) {
@@ -15,16 +17,19 @@ class AbstractRandomNumber {
      * @type {NumberLength}
      * @protected
      */
-    this._length = this._calculateLength();
+    this._length = 0;
+    this._calculateLength();
 
     /**
      * @type {number}
-     * @private
+     * @protected
      */
     this._value = 0;
   }
 
   /**
+   * Returns the number configuration
+   *
    * @return {Configuration}
    */
   getConfiguration() {
@@ -32,6 +37,8 @@ class AbstractRandomNumber {
   }
 
   /**
+   * Set the number configuration
+   *
    * @param {Configuration} NumberConfiguration
    */
   setConfiguration(NumberConfiguration) {
@@ -40,6 +47,8 @@ class AbstractRandomNumber {
   }
 
   /**
+   * Retrieves the number length
+   *
    * @return {NumberLength}
    */
   getLength() {
@@ -47,6 +56,8 @@ class AbstractRandomNumber {
   }
 
   /**
+   * Retrieves the number value
+   *
    * @return {number}
    */
   getValue() {
@@ -54,7 +65,8 @@ class AbstractRandomNumber {
   }
 
   /**
-   * Validate if NumberConfiguration param is instance of Configuration object
+   * Validate if NumberConfiguration param is an instance of Configuration object
+   *
    * @param {Configuration} NumberConfiguration
    * @return {boolean}
    * @protected
@@ -68,7 +80,8 @@ class AbstractRandomNumber {
   }
 
   /**
-   * Randomize a length between configured min and max length
+   * Randomize a length between the min and max length configured
+   *
    * @return {NumberLength}
    * @protected
    */
@@ -76,7 +89,7 @@ class AbstractRandomNumber {
     const minLength = this._configuration.getMinLength().getValue();
     const maxLength = this._configuration.getMaxLength().getValue();
 
-    return new NumberLength(
+    this._length = new NumberLength(
       Math.floor(
         minLength +
         (Math.random() * (maxLength + 1 - minLength))
@@ -86,6 +99,7 @@ class AbstractRandomNumber {
 
   /**
    * Return a new number with strong randomness
+   *
    * @param {number} number
    * @return {number}
    * @protected

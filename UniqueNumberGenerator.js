@@ -1,5 +1,6 @@
 const Configuration = require('./Configuration.js');
 const NumberLength = require('./NumberLength.js');
+const AbstractRandomNumber = require('./AbstractRandomNumber.js');
 const RandomNumber = require('./RandomNumber.js');
 const RandomNumberTimestampBased = require('./RandomNumberTimestampBased.js');
 
@@ -15,18 +16,23 @@ class UniqueNumberGenerator {
   }
 
   /**
-   * @return {RandomNumber|RandomNumberTimestampBased}
+   * Retrieves the number
+   *
+   * @return {AbstractRandomNumber}
    */
   getValue() {
     return this._value;
   }
 
   /**
+   * Generates a random number
+   *
    * @param {Configuration} NumberConfiguration
-   * @return {RandomNumber|RandomNumberTimestampBased}
+   * @return {AbstractRandomNumber}
    * @private
    */
   _generate(NumberConfiguration) {
+    // If configuration instance not provided, generates a random configuration
     if (!(NumberConfiguration instanceof Configuration)) {
       NumberConfiguration = this._generateConfiguration();
     }
@@ -39,6 +45,8 @@ class UniqueNumberGenerator {
   }
 
   /**
+   * Generates a random Configuration
+   *
    * @return {Configuration}
    * @private
    */

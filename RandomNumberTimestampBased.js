@@ -1,5 +1,3 @@
-const crypto = require('crypto');
-const fpe = require('node-fpe');
 const AbstractRandomNumber = require('./AbstractRandomNumber.js');
 const Configuration = require('./Configuration.js');
 const RandomNumber = require('./RandomNumber.js');
@@ -8,6 +6,8 @@ const NumberLength = require('./NumberLength.js');
 class RandomNumberTimestampBased extends AbstractRandomNumber {
 
   /**
+   * A random number timestamp based
+   *
    * @param {Configuration} NumberConfiguration
    */
   constructor(NumberConfiguration) {
