@@ -1,3 +1,5 @@
+const MAX_SAFE_LENGTH = Number.MAX_SAFE_INTEGER.toString().length;
+
 class NumberLength {
 
   /**
@@ -9,6 +11,10 @@ class NumberLength {
      * @private
      */
     this._value = this._computeLength(length);
+  }
+
+  static getMaxSafeLength() {
+    return MAX_SAFE_LENGTH;
   }
 
   /**
@@ -25,7 +31,7 @@ class NumberLength {
    */
   _computeLength(length) {
     let value = length;
-    const maxLength = Number.MAX_SAFE_INTEGER.toString().length;
+    const maxLength = MAX_SAFE_LENGTH;
 
     if (length > 0 && length > maxLength) {
       value = maxLength;
