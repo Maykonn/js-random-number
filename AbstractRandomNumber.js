@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const fpe = require('node-fpe');
 const Configuration = require('./Configuration.js');
+const NumberLength = require('./NumberLength.js');
 
 class AbstractRandomNumber {
 
@@ -8,7 +9,14 @@ class AbstractRandomNumber {
    * @param {Configuration} NumberConfiguration
    */
   constructor(NumberConfiguration) {
+    /**
+     * @return {number}
+     */
     this._value = undefined;
+
+    /**
+     * @return {NumberLength}
+     */
     this._length = undefined;
 
     /**
@@ -27,7 +35,7 @@ class AbstractRandomNumber {
   }
 
   /**
-   * @return {number}
+   * @return {NumberLength}
    */
   getLength() {
     return this._length;
