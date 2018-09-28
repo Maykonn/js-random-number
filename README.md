@@ -1,7 +1,7 @@
 # JS Random Number
 
-With this package, you can create Random Numbers and Timestamp Based Random Numbers using strong randomized bytes as seeds.
-You can specify the min and max lengths (which will generate a random length between this values) or configure a specific length.
+With this package, you can create Random Numbers and Timestamp Based Random Numbers with low probability of collision 
+using strong randomized bytes as seeds. You can specify the min and max lengths (which will generate a random length between this values) or configure a specific length.
 
 ## Random Numbers
 
