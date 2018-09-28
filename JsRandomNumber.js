@@ -4,7 +4,7 @@ const AbstractRandomNumber = require('./src/AbstractRandomNumber.js');
 const RandomNumber = require('./src/RandomNumber.js');
 const RandomNumberTimestampBased = require('./src/RandomNumberTimestampBased.js');
 
-class RandomNumberGenerator {
+class JsRandomNumber {
 
   /**
    * Generates a random number
@@ -12,7 +12,7 @@ class RandomNumberGenerator {
    * @param {Configuration|undefined} NumberConfiguration
    */
   constructor(NumberConfiguration = undefined) {
-    this._value = this._generate(NumberConfiguration);
+    this._number = this._generate(NumberConfiguration);
   }
 
   /**
@@ -20,8 +20,8 @@ class RandomNumberGenerator {
    *
    * @return {AbstractRandomNumber}
    */
-  getValue() {
-    return this._value;
+  getNumber() {
+    return this._number;
   }
 
   /**
@@ -57,4 +57,9 @@ class RandomNumberGenerator {
 
 }
 
-module.exports = RandomNumberGenerator;
+module.exports = {
+  Configuration: Configuration,
+  NumberLength: NumberLength,
+  AbstractRandomNumber: AbstractRandomNumber,
+  Generator: JsRandomNumber
+};

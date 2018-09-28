@@ -3,17 +3,31 @@
 With this package, you can create Random Numbers and Timestamp Based Random Numbers with low probability of collision 
 using strong randomized bytes as seeds. You can specify the min and max lengths (which will generate a random length between this values) or configure a specific length.
 
+## Installation
+
+With npm:
+
+```
+npm i js-random-number
+```
+
+Or just clone this repository and import the `./JsRandomNumber.js` file into your application.
+
+```
+https://github.com/Maykonn/js-random-number.git
+```
+
 ## Random Numbers
 
 Random Numbers are generated with strong randomized bytes to seed the random number generation algorithm using the 
 Node.js Crypto module. The most simple way to generate a random number is:
 
 ```JS
-const RandomNumberGenerator = require('./RandomNumberGenerator.js');
+const JsRandomNumber = require('js-random-number');
   
-const RandomNumber = new RandomNumberGenerator();
+const RandomNumber = new JsRandomNumber.Generator();
 console.log('Random Number timestamp based:');
-console.log(RandomNumber.getValue());
+console.log(RandomNumber.getNumber());
 ```
 
 The console response might be:
@@ -34,16 +48,15 @@ Note that the min and max length are randomly generated and the that the length 
 configuration requirements. But, when necessary you can configure the min and max length manually using the `Configuration` object:
 
 ```JS
-const Configuration = require('./src/Configuration.js');
-const RandomNumberGenerator = require('./RandomNumberGenerator.js');
+const JsRandomNumber = require('js-random-number');
+const NumberConfig = new JsRandomNumber.Configuration();
   
-const NumberConfig = new Configuration();
 NumberConfig.setMinLength(4);
 NumberConfig.setMaxLength(10);
   
-const RandomNumber = new RandomNumberGenerator();
+const RandomNumber = new JsRandomNumber.Generator(NumberConfig);
 console.log('Random Number timestamp based:');
-console.log(RandomNumber.getValue());
+console.log(RandomNumber.getNumber());
 ```  
 
 And now the console response will be different:
@@ -63,8 +76,8 @@ RandomNumber {
 Maybe you want to generate numbers with a specific length, you might do:
 
 ```JS
-const Configuration = require('./src/Configuration.js');
-const NumberConfig = new Configuration();
+const JsRandomNumber = require('js-random-number');
+const NumberConfig = new JsRandomNumber.Configuration();
 NumberConfig.setLength(6);
 ```
 
@@ -80,15 +93,14 @@ The same way which random numbers the timestamp based numbers are generated with
 the generation randomness, but the number will be randomized with timestamp as the start which decreases the collision probability.
 
 ```JS
-const Configuration = require('./src/Configuration.js');
-const RandomNumberGenerator = require('./RandomNumberGenerator.js');
+const JsRandomNumber = require('js-random-number');
   
-const NumberConfig = new Configuration();
+const NumberConfig = new JsRandomNumber.Configuration();
 NumberConfig.timestampBased();
   
-const RandomNumberTimestampBased = new RandomNumberGenerator(NumberConfig);
+const RandomNumberTimestampBased = new JsRandomNumber.Generator(NumberConfig);
 console.log('Random Number timestamp based:');
-console.log(RandomNumberTimestampBased.getValue());
+console.log(RandomNumber.getNumber());
 ```
 
 The timestamp based random number rules:
@@ -101,17 +113,15 @@ the configured length to generate the number. For example, suppose that you want
 on timestamp, you might do:   
 
 ```JS
-const Configuration = require('./src/Configuration.js');
-const NumberLength = require('./src/NumberLength.js');
-const RandomNumberGenerator = require('./RandomNumberGenerator.js');
+const JsRandomNumber = require('js-random-number');
   
-const NumberConfig = new Configuration();
+const NumberConfig = new JsRandomNumber.Configuration();
 NumberConfig.timestampBased();
-NumberConfig.setMaxLength(NumberLength.getMaxSafeLength());
+NumberConfig.setMaxLength(JsRandomNumber.NumberLength.getMaxSafeLength());
   
-const RandomNumberTimestampBased = new RandomNumberGenerator(NumberConfig);
+const RandomNumberTimestampBased = new JsRandomNumber.Generator(NumberConfig);
 console.log('Random Number timestamp based:');
-console.log(RandomNumberTimestampBased.getValue());
+console.log(RandomNumberTimestampBased.getNumber());
 ```
 
 The console response might be:
