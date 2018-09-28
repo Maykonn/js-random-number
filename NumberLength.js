@@ -1,8 +1,15 @@
+/**
+ * The length of the max safe integer
+ *
+ * @type {number}
+ */
 const MAX_SAFE_LENGTH = Number.MAX_SAFE_INTEGER.toString().length;
 
 class NumberLength {
 
   /**
+   * The number length
+   *
    * @param {number} length
    */
   constructor(length = 0) {
@@ -13,11 +20,18 @@ class NumberLength {
     this._value = this._computeLength(length);
   }
 
+  /**
+   * Retrieves the max safe length, based on the length of the max safe integer
+   *
+   * @return {number}
+   */
   static getMaxSafeLength() {
     return MAX_SAFE_LENGTH;
   }
 
   /**
+   * Retrieves the number length as number
+   *
    * @return {number}
    */
   getValue() {
@@ -25,6 +39,8 @@ class NumberLength {
   }
 
   /**
+   * Computes the length
+   *
    * @param length
    * @return {number}
    * @private
