@@ -7,7 +7,7 @@ const RandomNumberGenerator = require('../RandomNumberGenerator.js');
 // Configuring the random number generation
 const NumberConfig = new Configuration();
 NumberConfig.setMinLength(4);
-NumberConfig.setMaxLength(10);
+NumberConfig.setMaxLength(NumberLength.getMaxSafeLength());
 
 // Generates a random number
 const RandomNumber = new RandomNumberGenerator(NumberConfig);
