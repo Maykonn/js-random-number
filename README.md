@@ -132,3 +132,15 @@ RandomNumberTimestampBased {
 ```
 
 This example padded with a length of 3 decreases a lot the collision probability even for calls executes at same millisecond. 
+
+# Community Support
+If you need help with this bundle please consider [open a question on StackOverflow](https://stackoverflow.com/questions/ask)
+using the `js-random-number` tag, it is the official support platform for this bundle.
+
+Github Issues are dedicated to bug reports and feature requests.
+
+# Contributing
+You can contribute to this project cloning this repository and in your clone you just need to create a new branch using a 
+name related to the new functionality which you'll create.  
+When you finish your work, you just need to create a pull request which will be revised, merged to master branch (if the code 
+doesn't break the project) and published as a new release.
