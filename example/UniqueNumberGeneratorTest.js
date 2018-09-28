@@ -16,6 +16,9 @@ console.log('\n');
 // Reconfiguring the random number generation
 NumberConfig.reset();
 NumberConfig.timestampBased();
+NumberConfig.setMinLength(15);
+NumberConfig.setMaxLength(JsRandomNumber.NumberLength.getMaxSafeLength());
+
 
 // Generates a random number timestamp based
 const RandomNumberTimestampBased = new JsRandomNumber.Generator(NumberConfig);
