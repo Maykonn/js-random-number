@@ -1,6 +1,6 @@
 "use strict";
 
-const Configuration = require('../Configuration.js');
+const Configuration = require('../src/Configuration.js');
 const UniqueNumberGenerator = require('../UniqueNumberGenerator.js');
 
 // Configuring the random number generation

@@ -1,8 +1,8 @@
-const Configuration = require('./Configuration.js');
-const NumberLength = require('./NumberLength.js');
-const AbstractRandomNumber = require('./AbstractRandomNumber.js');
-const RandomNumber = require('./RandomNumber.js');
-const RandomNumberTimestampBased = require('./RandomNumberTimestampBased.js');
+const Configuration = require('./src/Configuration.js');
+const NumberLength = require('./src/NumberLength.js');
+const AbstractRandomNumber = require('./src/AbstractRandomNumber.js');
+const RandomNumber = require('./src/RandomNumber.js');
+const RandomNumberTimestampBased = require('./src/RandomNumberTimestampBased.js');
 
 class UniqueNumberGenerator {
 
