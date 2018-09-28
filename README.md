@@ -74,7 +74,7 @@ The random number rules:
 - The number max length never will be greater than the Number.MAX_SAFE_INTEGER length
 - The length can be between the min and max length
 
-## Random Numbers Timestamp Based
+## Timestamp Based Random Numbers
 
 The same way which random numbers the timestamp based numbers are generated with strong randomized bytes to seed
 the generation randomness, but the number will be randomized with timestamp as the start which decreases the collision probability.
