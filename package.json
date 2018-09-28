@@ -1,21 +1,39 @@
 {
-  "name": "js-unique-number",
-  "version": "1.0.0",
+  "name": "js-random-number",
+  "homepage": "https://github.com/Maykonn/js-random-number#readme",
   "description": "",
-  "main": "UniqueNumber.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "keywords": [
+    "random-generation",
+    "random",
+    "number",
+    "integer",
+    "unique",
+    "unique-id",
+    "unique-identifier",
+    "timestamp",
+    "crypto",
+    "random-bytes",
+    "fpe",
+    "nodejs",
+    "node-js",
+    "javascript",
+    "js",
+    "length",
+    "randomization",
+    "randomized",
+    "algorithms"
+  ],
+  "author": "Maykonn Welington Candido <maykonn@outlook.com> (https://github.com/Maykonn)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Maykonn/js-unique-number.git"
+    "url": "git+https://github.com/Maykonn/js-random-number.git"
   },
-  "author": "",
-  "license": "ISC",
+  "version": "1.0.0",
+  "main": "RandomNumberGenerator.js",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Maykonn/js-unique-number/issues"
+    "url": "https://github.com/Maykonn/js-random-number/issues"
   },
-  "homepage": "https://github.com/Maykonn/js-unique-number#readme",
   "dependencies": {
     "node-fpe": "^1.0.0"
   }
