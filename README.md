@@ -29,6 +29,8 @@ const JsRandomNumber = require('js-random-number');
 const RandomNumber = new JsRandomNumber.Generator();
 console.log('Random Number:');
 console.log(RandomNumber.getNumber());
+console.log('\n');
+console.log('Random Number Value:', RandomNumber.getNumber().getValue());
 ```
 
 The console response might be:
@@ -43,6 +45,8 @@ RandomNumber {
      _timestampBased: false },
   _length: NumberLength { _value: 14 },
   _value: 83381838615074 }
+  
+Random Number Value: 1510314403
 ```
 
 Note that the min and max length are randomly generated and that the length generated is 14 that accomplishes the 

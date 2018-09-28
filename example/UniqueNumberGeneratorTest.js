@@ -12,6 +12,8 @@ const RandomNumber = new JsRandomNumber.Generator(NumberConfig);
 console.log('Random Number:');
 console.log(RandomNumber.getNumber());
 console.log('\n');
+console.log('Random Number Value:', RandomNumber.getNumber().getValue());
+console.log('\n');
 
 // Reconfiguring the random number generation
 NumberConfig.reset();
