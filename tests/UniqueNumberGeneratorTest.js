@@ -1,12 +1,13 @@
 "use strict";
 
 const Configuration = require('../src/Configuration.js');
+const NumberLength = require('../src/NumberLength.js');
 const RandomNumberGenerator = require('../RandomNumberGenerator.js');
 
 // Configuring the random number generation
 const NumberConfig = new Configuration();
-NumberConfig.setMinLength(8);
-NumberConfig.setMaxLength(16);
+NumberConfig.setMinLength(4);
+NumberConfig.setMaxLength(10);
 
 // Generates a random number
 const RandomNumber = new RandomNumberGenerator(NumberConfig);
