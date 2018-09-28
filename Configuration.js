@@ -2,11 +2,16 @@ const NumberLength = require('./NumberLength.js');
 
 class Configuration {
 
+  /**
+   * Configures the random number generation
+   */
   constructor() {
     this.reset();
   }
 
   /**
+   * Resets the configuration to default state
+   *
    * @return {Configuration}
    */
   reset() {
@@ -31,6 +36,8 @@ class Configuration {
   }
 
   /**
+   * Configures a fixed length
+   *
    * @param {number} length
    * @return {Configuration}
    */
@@ -43,6 +50,8 @@ class Configuration {
   }
 
   /**
+   * Configures the min length
+   *
    * @param {number} length
    * @return {Configuration}
    */
@@ -53,6 +62,8 @@ class Configuration {
   }
 
   /**
+   * Retrieves the min length
+   *
    * @return {NumberLength}
    */
   getMinLength() {
@@ -68,6 +79,8 @@ class Configuration {
   }
 
   /**
+   * Configures the max length
+   *
    * @param {number} length
    * @return {Configuration}
    */
@@ -78,6 +91,8 @@ class Configuration {
   }
 
   /**
+   * Retrieves the max length
+   *
    * @return {NumberLength}
    */
   getMaxLength() {
@@ -93,6 +108,8 @@ class Configuration {
   }
 
   /**
+   * The number randomness will be based on timestamp
+   *
    * @return {Configuration}
    */
   timestampBased() {
@@ -101,6 +118,8 @@ class Configuration {
   }
 
   /**
+   * Verify if a number is timestamp based
+   *
    * @return {boolean}
    */
   isTimestampBased() {
@@ -108,6 +127,8 @@ class Configuration {
   }
 
   /**
+   * Validate the length number
+   *
    * @param {number} length
    * @return {boolean}
    * @private
@@ -121,6 +142,8 @@ class Configuration {
   }
 
   /**
+   * Verify if min length is valid
+   *
    * @private
    */
   _minIsGreaterThanMax() {
