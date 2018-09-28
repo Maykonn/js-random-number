@@ -4,7 +4,7 @@ const AbstractRandomNumber = require('./src/AbstractRandomNumber.js');
 const RandomNumber = require('./src/RandomNumber.js');
 const RandomNumberTimestampBased = require('./src/RandomNumberTimestampBased.js');
 
-class UniqueNumberGenerator {
+class RandomNumberGenerator {
 
   /**
    * Generates a random number
@@ -57,4 +57,4 @@ class UniqueNumberGenerator {
 
 }
 
-module.exports = UniqueNumberGenerator;
+module.exports = RandomNumberGenerator;
