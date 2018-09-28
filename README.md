@@ -1,12 +1,11 @@
 # JS Random Number
 
-With this package you can create Random Numbers and Random Numbers Timestamp Based using strong randomized bytes as seeds.
-You can specify the number min and max lengths (which will generate a random length between this values) or configure 
-a specific length.
+With this package, you can create Random Numbers and Timestamp Based Random Numbers using strong randomized bytes as seeds.
+You can specify the min and max lengths (which will generate a random length between this values) or configure a specific length.
 
 ## Random Numbers
 
-Random numbers are generated with strong randomized bytes to seed the random number generation algorithm using the 
+Random Numbers are generated with strong randomized bytes to seed the random number generation algorithm using the 
 Node.js Crypto module. The most simple way to generate a random number is:
 
 ```JS
@@ -31,9 +30,8 @@ RandomNumber {
   _value: 83381838615074 }
 ```
 
-Note that the min and max length are randomly generated and the that the length generate is 14 that accomplish the 
-configuration requirements. But, when necessary you can configure the min and max length manually using the 
-`Configuration` object:
+Note that the min and max length are randomly generated and the that the length generate is 14 that accomplishes the 
+configuration requirements. But, when necessary you can configure the min and max length manually using the `Configuration` object:
 
 ```JS
 const Configuration = require('./src/Configuration.js');
@@ -72,10 +70,14 @@ NumberConfig.setLength(6);
 
 That's will configure to 6 the number length.
 
+The random number rules:
+- The number max length never will be greater than the Number.MAX_SAFE_INTEGER length
+- The length can be between the min and max length
+
 ## Random Numbers Timestamp Based
 
 The same way which random numbers the timestamp based numbers are generated with strong randomized bytes to seed
-the generation randomness, but the number will be randomized with timestamp as start which decreases the collision probability.
+the generation randomness, but the number will be randomized with timestamp as the start which decreases the collision probability.
 
 ```JS
 const Configuration = require('./src/Configuration.js');
@@ -89,13 +91,13 @@ console.log('Random Number timestamp based:');
 console.log(RandomNumberTimestampBased.getValue());
 ```
 
-The random number timestamp based rules:
+The timestamp based random number rules:
 - The number min length never will be less than the timestamp length
 - The number max length never will be greater than the Number.MAX_SAFE_INTEGER length
 - The length can be between the min and max length
 
 Another important note about Timestamp Based Numbers is that the algorithm can generate a random pad value to accomplish 
-the configured length to generate the number. For example, suppose that you wants a number with the max safe length but based
+the configured length to generate the number. For example, suppose that you want a number with the max safe length but based
 on timestamp, you might do:   
 
 ```JS
@@ -129,4 +131,4 @@ RandomNumberTimestampBased {
   _timestampLength: NumberLength { _value: 13 } }
 ```
 
-This example padding with a length of 3 decreases a lot the collision probability even for calls executes at same millisecond. 
+This example padded with a length of 3 decreases a lot the collision probability even for calls executes at same millisecond. 
