@@ -28,13 +28,13 @@
     "type": "git",
     "url": "git+https://github.com/Maykonn/js-random-number.git"
   },
-  "version": "1.0.0",
   "main": "JsRandomNumber.js",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Maykonn/js-random-number/issues"
   },
   "dependencies": {
-    "node-fpe": "^1.1.0"
-  }
+    "node-fpe": "^1.0.0"
+  },
+  "version": "1.1.0"
 }
