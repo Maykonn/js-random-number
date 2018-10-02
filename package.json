@@ -1,7 +1,7 @@
 {
   "name": "js-random-number",
   "homepage": "https://github.com/Maykonn/js-random-number#readme",
-  "description": "",
+  "description": "With this package, you can create Random Numbers and Timestamp Based Random Numbers with low probability of collision using strong randomized bytes as seed.",
   "keywords": [
     "random-generation",
     "random",
@@ -26,7 +26,7 @@
   "author": "Maykonn Welington Candido <maykonn@outlook.com> (https://github.com/Maykonn)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Maykonn/js-random-number.git"
+    "url": "git+https://github.com/Maykonn/js-random-number"
   },
   "main": "JsRandomNumber.js",
   "license": "MIT",
@@ -36,5 +36,5 @@
   "dependencies": {
     "node-fpe": "^1.0.0"
   },
-  "version": "1.1.2"
+  "version": "1.1.3"
 }
