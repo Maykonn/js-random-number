@@ -46,7 +46,7 @@ RandomNumber {
   _length: NumberLength { _value: 14 },
   _value: 83381838615074 }
   
-Random Number Value: 1510314403
+Random Number Value: 83381838615074
 ```
 
 Note that the min and max length are randomly generated and that the length generated is 14 that accomplishes the 
